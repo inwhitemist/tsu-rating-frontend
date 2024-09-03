@@ -1,0 +1,350 @@
+/* Основные стили для страницы */
+html {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* Для Firefox */
+    -ms-overflow-style: none;
+    /* Для Internet Explorer и Edge */
+    position: relative;
+}
+
+html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+html::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(20px);
+    /* Добавляем блюр */
+    -webkit-backdrop-filter: blur(20px);
+    /* Добавляем блюр для WebKit */
+    z-index: -1;
+    /* Помещаем за контентом */
+}
+
+body {
+    position: relative; /* Изменено с absolute на relative */
+    margin: 0; /* Удален отрицательный отступ */
+    padding-top: 40px;
+    z-index: 3;
+    background: url('../assets/background.png') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh; /* Добавлено для минимальной высоты */
+    width: 100%; /* Добавлено для полной ширины */
+}
+
+.header,
+.teachers-list,
+.card-grid,
+.add-action {
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+}
+
+.teachers-list {
+    margin-bottom: 20px;
+    padding-top: 20px;
+    color: #ffffff;
+    /* Белый цвет */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+}
+
+.teachers-list>div {
+    flex: 0 0 auto;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    flex: 1 1 200px;
+    max-width: 300px;
+}
+
+.card {
+    background: #1a1a1a;
+    /* Темный фон для карточки */
+    border: solid 1px #242629;
+    border-radius: 8px !important;
+    background-color: #242629 !important;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.5) !important; /* Добавлено белое свечение */
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #ffffff;
+    /* Белый цвет для текста */
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    border: solid 1px #242629;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 0 4px rgba(255, 255, 255, 0.7) !important; /* Добавлено белое свечение при наведении */
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    /* Фиксированная высота для изображений */
+    object-fit: cover;
+    /* Сохранение пропорций изображения */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.card-footer {
+    background: #242629; /* Установлен цвет фона */
+    border-top: 1px solid #333;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: #aaa;
+    text-align: center;
+}
+
+.add-action {
+    z-index: 4;
+    color: #ffffff;
+    /* Белый цвет */
+    margin-top: 40px;
+    /* Увеличиваем отступ сверху */
+}
+
+.dynamic-gradient {
+    background: linear-gradient(135deg, #090A0B, #18191C, #131315);
+    background-size: 400% 400%;
+    animation: gradientAnimation 5s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Стили для кнопок прокрутки */
+.container-scroll-buttons {
+    top: 70%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.scroll-button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    cursor: pointer;
+    padding-top: 4%;
+}
+
+.scroll-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.menu-bar {
+    background: linear-gradient(135deg, #090A0B, #18191C, #131315);
+    background-size: 400% 400%;
+    animation: gradientAnimation 5s ease infinite;
+    position: fixed !important; /* Добавлено !important */
+    overflow: hidden;
+    width: 110px;
+    top: 30px;
+    left: 50px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 110;
+    transition: 0.3s ease all;
+  
+    &:hover {
+      width: 250px;
+  
+      .mbn-item {
+        padding-left: 15px;
+      }
+  
+      .mbn-item-text {
+        opacity: 1;
+        width: auto;
+        height: auto;
+        top: 12px;
+        left: 60px;
+      }
+  
+      .menu-bar-logo-abs-small {
+        opacity: 0;
+  
+        img {
+          top: 20px;
+        }
+      }
+  
+      .menu-bar-logo-abs-big {
+        opacity: 1;
+        top: 0;
+  
+        img {
+          top: 0;
+        }
+      }
+  
+      .menu-bar-separator:after {
+        left: 26px;
+      }
+    }
+}
+
+.menu-bar-separator {
+    margin-bottom: 14px;
+    display: block;
+    position: relative;
+}
+.menu-bar-logo-wrap {
+    padding: 10px;
+    height: 100px;
+    width: 100%;
+  }
+  
+  .menu-bar-logo {
+    position: relative;
+  }
+  .menu-bar-logo-abs {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    img {
+      position: relative;
+      top: 0;
+      transition: 0.3s ease all;
+    }
+  }
+
+
+  .menu-bar-logo-abs-small {
+    transition: 0.3s ease all;
+  }
+  
+  .menu-bar-logo-abs-big {
+    opacity: 0;
+    top: 3px;
+    transition: 0.3s ease all;
+  
+    img {
+      top: 20px;
+      width: 180px !important;
+    }
+}
+.menu-bar-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.37);
+    border-radius: 8px;
+  
+    img {
+      width: 65px;
+      display: block;
+    }
+  }
+  
+.menu-bar-navigation {
+    padding: 15px;
+    width: 100%;
+  }
+  .mbn-item {
+    color: white;
+    display: flex;
+    padding: 0 11px;
+    transition: 0.3s ease all;
+    padding-left: 27px;
+    min-height: 40px;
+    position: relative;
+    align-items: center;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+  
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+  }
+.mbn-item-text {
+  opacity: 0;
+  transition: 0.3s ease all;
+  display: none;
+  position: absolute;
+  left: 55px;
+  top: 14px;
+  width: 100%;
+  display: block;
+  min-width: 200px;
+  text-decoration: none;
+}
+.mbn-item-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 23px;
+  
+    img,
+    span {
+      width: 100%;
+    }
+  }
+
